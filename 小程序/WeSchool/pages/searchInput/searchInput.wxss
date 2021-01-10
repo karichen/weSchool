@@ -1,0 +1,17 @@
+.Search-clear{
+  position: relative;
+  right: -350rpx;
+}
+
+page{
+  background-color: white;
+}
+.area{
+  padding: 20rpx;
+  width: 100%;
+}
+.mybutton{
+  /* float: left; */
+   margin-left: 10rpx;
+   margin-top: 10rpx;
+}

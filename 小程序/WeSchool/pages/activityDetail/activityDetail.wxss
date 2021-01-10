@@ -1,0 +1,43 @@
+.color {
+    background-color: white;
+}
+
+.foot-right {
+    width: 50%;
+}
+
+.foot-left {
+    width: 50%;
+}
+
+.footer {
+    margin-bottom: 200rpx;
+}
+
+
+/* 回到首页,固定定位,悬浮 */
+
+.d-back-home {
+    position: fixed;
+    width: 96rpx;
+    height: 96rpx;
+    right: 30rpx;
+    bottom: 166rpx;
+    z-index: 10000;
+}
+
+.margin-botton{
+  margin-bottom: 80rpx;
+  /* height: 80rpx; */
+}
+
+.content{
+ margin-top:15rpx; 
+ margin-left: 35rpx;
+ font-size: 35rpx;
+}
+
+.title{
+ font-size: 35rpx;
+ color:  #CCCCCC
+}

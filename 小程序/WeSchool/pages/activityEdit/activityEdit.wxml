@@ -1,0 +1,182 @@
+<!-- 顶部图片 -->
+<!-- <view class="cu-card case">
+  <view class="cu-item shadow">
+    <view class="image">
+      <image src="../../images/picturePoster-1.png" mode="widthFix"></image>
+      <view class="cu-tag bg-blue color">点击跟换</view>
+    </view>
+  </view>
+</view> -->
+
+<!-- 表单 -->
+<form bindsubmit="formdata">
+  <view class="cu-form-group margin-top">
+    <view class="title">活动主题</view>
+    <input placeholder="{{major==null?'必填':major}}" name="active_major"disabled='{{isDisabled}}'></input>
+  </view>
+
+
+  <view class="cu-form-group">
+    <view class="title">开始时间</view>
+    <!-- <input placeholder="必填" name="active_satrttime"></input> -->
+    <picker mode="multiSelector" bindchange="startbindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <input value="{{starttime==null?'':starttime}}" name="avtive_starttime" placeholder='选择时间' />
+    </picker>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">结束时间</view>
+    <!-- <input placeholder="必填" name="active_satrttime"></input> -->
+    <picker mode="multiSelector" bindchange="endbindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <input value="{{endtime==null?'':endtime}}" name="avtive_endtime" placeholder='选择时间' />
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">活动地点</view>
+    <input value="{{place==null?'':place}}" placeholder="必填" name="active_place"></input>
+  </view>
+
+
+  <view class="cu-form-group">
+    <view class="title">报名人数</view>
+    <input value="{{count==null?'':count}}" placeholder="必填" name="active_count"></input>
+  </view>
+
+
+  <view class="cu-form-group">
+    <view class="title">添加价钱</view>
+    <input value="{{salary==null?'':salary}}" placeholder="选填" name="active_salary"></input>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">联系电话</view>
+    <input value="{{phone==null?'':phone}}" placeholder="选填" name="activer_phone"></input>
+  </view>
+
+  <view class="cu-form-group">
+    <view class="title">联系QQ</view>
+    <input value="{{QQ==null?'':QQ}}" placeholder="选填" name="activer_QQ"></input>
+  </view>
+
+  <view class="cu-form-group align-start">
+    <view class="title">活动备注</view>
+    <textarea value="{{remark==null?'':remark}}" placeholder="选填" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="" name="active_remark"></textarea>
+  </view>
+
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      活动相册
+    </view>
+    <view class="action">
+      {{imgList.length}}/4
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="key" bindtap="ViewImage" data-url="{{imgList[index]}}">
+        <image src="{{imgList[index]}}" mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+
+
+<!-- 添加的新功能 -->
+<view class="cu-bar bg-white margin-top">
+<view class="action">
+  编辑报名所填写信息
+</view>
+</view>
+<!-- 各种活动 -->
+<view class="search-are" wx:for="{{fields}}">
+    <!-- 内容  class =  search-content-->
+    <view class="cu-bar bg-white">
+              <view class="action">
+                        <view class="wid">  <text class="cuIcon-title text-blue"></text>{{item}} </view>
+                  <button class="cu-btn  round bg-olive" role="button" data-number="{{index}}" bindtap="editFields" data-target="editModal1" aria-disabled="false">编辑</button>
+                  <text decode="{{true}}">&ensp;&ensp;</text>
+                  <button class="cu-btn  round bg-cyan" role="button"   data-number="{{index}}"  bindtap="deleteFields" aria-disabled="false">删除</button>
+              </view>
+  </view>
+   
+    <!-- 编辑模态框内容 -->
+<view class="cu-modal {{modalName=='editModal1'?'show':''}}">
+<view class="cu-dialog">
+<view class="cu-bar bg-white justify-end">
+  <view class="content">编辑所选字段</view>
+  <view class="action" bindtap="hideModal">
+    <text class="cuIcon-close text-red"></text>
+  </view>
+</view>
+<view class="padding-xl">
+  <view class="cu-form-group">
+  <view class="title">更改为:</view>
+  <input placeholder="输入" bindinput ="editsInput"></input>
+</view>
+</view>
+<view class="cu-bar bg-white justify-end">
+  <view class="action">
+    <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+    <button class="cu-btn bg-green margin-left" bindtap="confirmEdit">确定</button>
+  </view>
+</view>
+</view>
+</view>
+    <!-- 内容 -->
+</view>
+ <button class="cu-btn block bg-green margin-tb-sm lg" bindtap="addFields"  data-target="addModal1"> <text class="cuIcon-add"></text>添加</button>   
+  
+   <!-- 添加字段的模态框 -->
+  <view class="cu-modal {{modalName=='addModal1'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">添加所需字段</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view class="cu-form-group">
+  <view class="title">添加:</view>
+     <input placeholder="输入" bindinput ="addInput"></input>
+  </view>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="confirmAdd">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="flex flex-direction">
+<button class="cu-btn bg-red margin-tb-sm lg color" formType="submit">提交更改</button>
+</view>
+
+<!-- 确认成功对话 -->
+<view class="cu-modal {{modalName=='successModal1'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      修改成功
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn bg-green margin-left" bindtap="backMyAction">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+</form>

@@ -1,0 +1,56 @@
+<!-- 顶部 -->
+<view class="top">
+  <view class="triangle-topleft"></view>
+  <view class="userAvatar-box">
+    <open-data class="userAvatar" type="userAvatarUrl"></open-data>
+  </view>
+  <view class="userNickName-box">
+    <open-data class="userNickName" type="userNickName"></open-data>
+  </view>
+</view>
+
+<!-- 菜单栏 -->
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius menu-box">
+  <view class="cu-item arrow">
+    <view class="content" bindtap="skipMyAction">
+      <text class="cuIcon-edit text-red"></text>
+      <text class="text-grey">活动管理</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <view class="content" bindtap="skipActivities">
+      <text class="cuIcon-location text-yellow"></text>
+      <text class="text-grey">校园活动</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <button class="cu-btn content" open-type="share">
+      <text class="cuIcon-forwardfill text-cyan"></text>
+      <text class="text-grey">邀请好友</text>
+    </button>
+  </view>
+  <view class="cu-item arrow">
+    <navigator class="content" url="/pages/about/test/list" hover-class="none" bindtap="skipContactMe">
+      <text class="cuIcon-messagefill text-mauve"></text>
+      <text class="text-grey">联系我们</text>
+    </navigator>
+  </view>
+  <!-- <view class="cu-item arrow">
+     <button class="cu-btn content" bindtap="clearStorage">
+        <text class="cuIcon-repair text-blue"></text>
+        <text class="text-grey">清空缓存(解决注册失败)</text>
+    </button>
+    </view> -->
+    <view class="cu-item arrow">
+     <button class="cu-btn content" open-type="getUserInfo" bindgetuserinfo="getUserInfod">
+        <text class="cuIcon-friend text-yellow"></text>
+        <text class="text-grey">一键注册</text>
+    </button>
+    </view>
+</view> 
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-emojifill text-orange'></view>
+  <!-- <image src='/images/logo.png' class='png' mode='aspectFit'></image> -->
+  <view class='gray-text'>加载中...</view>
+</view>

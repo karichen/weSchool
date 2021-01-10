@@ -1,0 +1,68 @@
+<swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" class="swiper-slide" current="{{currentTab}}" duration="200" bindchange="swiperchange">
+  <view wx:for="{{examList}}" wx:for-item="item" wx:key="key">
+    <swiper-item catchtouchmove='catchTouchMove'>
+      <scroll-view scroll-y="true" style="height: 100%">
+        <view class="top-box">
+          <view class='action'>
+            <text class='cuIcon-titles text-white'></text>
+            <text class="content-1 text-white">题目:</text>
+            <text class="content-2 text-white">{{currentTab+1}}</text>
+            <text class="content-3 text-white">/10</text>
+          </view>
+        </view>
+        <!-- 循环区 -->
+        <!-- 题目区开始  -->
+        <view class="problem">
+          <view class="problem-image ">
+            <image src="{{problemList[index]}}" mode="widthFix"></image>
+          </view>
+          <!-- <view class="problem-word">
+            {{item.problem}}{{index}} 
+          </view> -->
+
+          <radio-group class="block" bindchange="radioChange" data-current="{{index}}">
+
+            <view class="bg-white radio-item">
+              <radio class="blue" value="A" bindtap="radioChange"></radio>
+              <view class="radio-answer">{{examList[index]['select_a']}}</view>
+            </view>
+
+            <view class="bg-white radio-item">
+              <radio class="blue" value="B" bindtap="radioChange"></radio>
+              <view class="radio-answer">{{examList[index]['select_b']}}</view>
+            </view>
+
+            <view class="bg-white radio-item">
+              <radio class="blue" value="C" bindtap="radioChange"></radio>
+              <view class="radio-answer">{{examList[index]['select_c']}}</view>
+            </view>
+
+            <view class="bg-white radio-item">
+              <radio class="blue" value="D" bindtap="radioChange"></radio>
+              <view class="radio-answer">{{examList[index]['select_d']}}</view>
+            </view>
+
+          </radio-group>
+        </view>
+        <!-- 题目区结束 -->
+        <!-- 选项区 -->
+
+        <view class="flex flex-direction option-box">
+          <button class="  margin-tb-sm lg option" bindtap="goPrevious">上一题</button>
+          <button class="  margin-tb-sm lg option" bindtap="goNext">
+            <view wx:if="{{index==9}}">提交</view>
+            <view wx:if="{{index!=9}}">下一题</view>
+          </button>
+
+        </view>
+
+      </scroll-view>
+    </swiper-item>
+  </view>
+</swiper>
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <view class='cuIcon-emojifill text-orange'></view>
+  <view class='gray-text'>加载中...</view>
+</view>

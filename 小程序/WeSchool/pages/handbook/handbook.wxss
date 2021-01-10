@@ -1,0 +1,150 @@
+.main {
+    width: 100%;
+    height: 96%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+}
+
+.top {
+    background-color: #8FC8BA;
+    height: 50rpx;
+    position: relative;
+    border-bottom: 1rpx solid white;
+}
+
+.aboutUs {
+    position: fixed;
+    right: 5%;
+    top: 90%;
+}
+
+.gif-wave {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    mix-blend-mode: screen;
+    height: 100rpx;
+}
+
+
+/* 左边start */
+
+.item image {
+    width: 600rpx;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    background-color: #f7f7f7;
+}
+
+.box-left {
+    width: 100%;
+    height: 110rpx;
+    text-align: center;
+    line-height: 110rpx;
+    font-size: 32rpx;
+    position: relative;
+}
+
+.box-left-hover {
+    width: 100%;
+    height: 110rpx;
+    text-align: center;
+    line-height: 110rpx;
+    font-size: 32rpx;
+    position: relative;
+    color: white;
+}
+
+.vertical {
+    position: absolute;
+    width: 12rpx;
+    height: 100%;
+}
+
+
+/* left-color-0 1 2 3 是左边每个小格子的颜色的颜色 */
+
+.left-color-0 {
+    background-color: #028c7c;
+}
+
+.left-color-1 {
+    background-color: #ffa300;
+}
+
+.left-color-2 {
+    background-color: #003c71;
+}
+
+.left-color-3 {
+    background-color: #f9423a;
+}
+
+
+/* 左边end */
+
+
+/* 右边start */
+
+.right {
+    flex: 8;
+}
+
+
+/* 上面的大框框 */
+
+.mess {
+    width: 90%;
+    height: 600rpx;
+    margin: 0 auto;
+    margin-top: 50rpx;
+    border-radius: 15rpx;
+}
+
+
+/* m1 m2 m3 m4控制页面颜色 */
+
+.m1 {
+    background-color: #e5f0ef;
+}
+
+.m2 {
+    background-color: #fff6e5;
+}
+
+.m3 {
+    background-color: #e5ebf1;
+}
+
+.m4 {
+    background-color: #feeceb;
+}
+
+
+/* 垃圾的具体内容 */
+
+.content {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 34rpx;
+}
+
+
+/* 垃圾的具体内容的灰色背景 */
+
+.content-even {
+    background-color: #f7f7f7;
+}
+
+
+/* 右边end */
+
+
+/* 测试 */

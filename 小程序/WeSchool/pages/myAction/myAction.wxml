@@ -1,0 +1,123 @@
+<scroll-view scroll-x class="bg-white nav text-center">
+  <view class="cu-item {{index==TabCur?'text-yellow cur':''}}" wx:for="{{content}}" wx:key="key" wx:for-item="item" bindtap="tabSelect" data-id="{{item.id}}">
+    {{item.name}}
+  </view>
+</scroll-view>
+
+
+<view class="gotop" hidden='{{!cangotop}}' catchtap="goTop">
+  <view>top</view>
+</view>
+
+<!-- 正在进行 -->
+<view wx:if="{{TabCur==0}}">
+
+  <view class="padding-lr  margin-top text-center" wx:if="{{inProgress.length==0}}">
+    <view class="solid-bottom padding">
+      <text class="text-ABC">∑(っ°Д°;)っnothing</text>
+    </view>
+    <view class="padding">您还没有创建过任何活动</view>
+  </view>
+
+  <!-- template start -->
+  <block wx:for="{{inProgress}}" wx:key="key" wx:item="item">
+  <view class="cu-card dynamic message-box">
+    <view class="cu-item shadow">
+      <!-- 頂部文字 -->
+      <view class="grid flex-sub padding-lr">
+        <view class="bg-img only-img message-box-image" >
+         <view class="cu-tag radius bg-green label">正在进行</view>
+       <image wx:if="{{item.imgUrl1=='http:chk'}}" src="../../images/picturePoster-1.png" mode="widthFix"></image>
+            <image wx:elif="{{item.imgUrl1!='http:chk'}}" src="{{item.imgUrl1}}" mode="widthFix"></image>
+        </view>
+      </view>
+      <!-- 底部文字 -->
+      <view class="message-box-bottom text-size">
+        <!-- 主体   创建 -->
+        <view class="text-center">
+          <text class="text-left long-text">主题：{{item.major}}</text>
+        </view>
+        <!-- 时间 -->
+        <view class="text-center">
+          <text class="text-left text-green">时间：{{item.starttime}}~{{item.endtime}}</text>
+        </view>
+        <!-- 地点 -->
+        <view class="text-center text-cut">
+          地点：
+          <text class="text-grey">{{item.place}}</text>
+        </view>
+        <!-- 备注 -->
+        <view class="text-center long-text">
+          <text>备注：</text>
+          <text class="text-grey">{{item.remark}}</text>
+        </view>
+
+        <view class="flex ">
+          <button class="flex-sub  margin-xs radius  text-weight text-white color-yellow" bindtap="skipActivityCreation" data-current="{{item.pwdid}}">点击编辑</button>
+          <button class="flex-sub  margin-xs radius  text-weight text-white color-yellow" bindtap="deleteActive" data-current="{{item.pwdid}}">点击删除</button>
+          <button class="flex-sub  margin-xs radius  color-origin text-weight text-white" bindtap="skipSignUpDetail" data-current="{{item.pwdid}}">查看报名</button>
+          <button class="flex-sub  margin-xs radius  color-origin text-weight text-white" open-type="share" data-current="{{item.pwdid}}"> <text class="cuIcon-forwardfill text-white"></text>分享</button>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  </block>
+<!-- template -------------------------------------------------------------------end-->
+</view>
+
+
+<!-- 历史活动 -->
+<view wx:if="{{TabCur==1}}">
+
+  <view class="padding-lr  margin-top text-center" wx:if="{{history.length==0}}">
+    <view class="solid-bottom padding">
+      <text class="text-ABC">(︶.̮︶✽)nothing</text>
+    </view>
+    <view class="padding">我不要什么荣华，往后余生，我只要你</view>
+  </view>
+
+  <!-- template----------------------------------------------------------------------------start -->
+  <block wx:for="{{history}}" wx:key="key" wx:item="item">
+  <view class="cu-card dynamic message-box">
+    <view class="cu-item shadow">
+      <!-- 頂部文字 -->
+      <view class="grid flex-sub padding-lr">
+        <view class="bg-img only-img message-box-image">
+          <view class="cu-tag radius bg-red label">已经结束</view>
+        <image wx:if="{{item.imgUrl1=='http:chk'}}" src="../../images/picturePoster-1.png" mode="widthFix"></image>
+            <image wx:elif="{{item.imgUrl1!='http:chk'}}" src="{{item.imgUrl1}}" mode="widthFix"></image>
+        </view>
+      </view>
+      <!-- 底部文字 -->
+      <view class="message-box-bottom text-size">
+        <!-- 主体   创建 -->
+        <view class="text-center">
+          <text class="text-left long-text">主题：{{item.major}}</text>
+        </view>
+        <!-- 时间 -->
+        <view class="text-center">
+          <text class="text-left text-red">时间：{{item.starttime}}~{{item.endtime}}</text>
+        </view>
+        <!-- 地点 -->
+        <view class="text-center long-text">
+          地点：
+          <text class="text-grey">{{item.place}}</text>
+        </view>
+        <!-- 备注 -->
+        <view class="text-center long-text">
+          <text>备注：</text>
+          <text class="text-grey">{{item.remark}}</text>
+        </view>
+
+
+        <view class="flex ">
+          <button class="flex-sub  margin-xs radius bg-yellow color-origin text-weight text-white" bindtap="skipSignUpDetail" data-current="{{item.id}}">查看报名</button>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  </block>
+<!-- template -------------------------------------------------------------------end-->
+</view>

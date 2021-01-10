@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chk.mapper.FeedBackMapper">
+    <insert id="addFeedBack" parameterType="com.chk.pojo.FeedBacker">
+        insert into feedback (openid,name,QQ,phone,wx,feed_back)values(#{openid},#{name},#{QQ},#{phone},#{wx},#{feed_back})
+    </insert>
+</mapper>

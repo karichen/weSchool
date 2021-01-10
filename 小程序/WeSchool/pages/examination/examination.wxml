@@ -1,0 +1,26 @@
+<view class="top-box">
+  <view class="top-box-title">
+    <text>测验</text>
+    <text class="cuIcon-edit top-box-title-icon"></text>
+  </view>
+  <view class="top-box-explain">测试题使用于预习和复习时巩固知识点，加深对知识的认知</view>
+</view>
+
+<view class="main">
+
+  <view class="detail">
+    <block wx:for="{{listUnits}}" wx:for-item="item" wx:key="key">
+      <view class="detail-item bg-blue" bindtap="goto" data-unit="{{item.unit}}" data-name="{{item.name}}">
+        <view class="detail-text">
+          {{item.name}}
+        </view>
+        <text class="cuIcon-right detail-icon"></text>
+      </view>
+    </block>
+  </view>
+
+</view>
+
+<view class="footer">
+  ©Copyright by 南邮通达•全粘攻城狮团队
+</view>

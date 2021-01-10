@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+<body>
+<button class="btn btn-info" th:onclick="'javascript:addmodalId(' + ${newId} + ');'"th:data-toggle="modal" th:attr="data-target='#addModal'" >添加用户</button>
+<table class="table-row-cell">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>密码</th>
+        <th colspan="2">操作</th>
+    </tr>
+    <tr th:each="user:${users}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getPwd()}"></td>
+        <td><button type="button"  class="update btn btn-primary" th:onclick=
+                "'javascript:modalId('+${user.getId()}+')'"
+                    th:data-toggle="modal" th:attr="data-target='#myModal'" >修改</button></td>
+        <td><button class="delete btn  btn-danger" th:onclick="'javascript:confirmDelete(' + ${user.getId()} + ');'">删除</button></td>
+
+    </tr>
+    </tr>
+</table>
+
+<!-- 修改用户模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title html-editor-align-center" id="myModalLabel">修改</h4>
+            </div>
+            <div class="modal-body">
+                    <input type="hidden" class="form-control" id="uid" name="uid">
+                    <div class="form-group">
+                        <label for="password" class="control-label">姓名:</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">密码:</label>
+                        <input type="text" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="text-right">
+                        <span id="returnMessage" class="glyphicon"> </span>
+                        <button type="button" class="btn btn-default right" data-dismiss="modal">关闭</button>
+                        <button id="submitBtn" type="button" class="btn btn-primary" >修改</button>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 添加用户的模态框（Modal） -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title html-editor-align-center" id="addModalLabel">添加</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="aid" class="control-label">ID:</label>
+                    <input  disabled="disabled" class="form-control" id="aid" name="aid">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label">姓名:</label>
+                    <input type="text" class="form-control" id="aname" name="aname">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label">密码:</label>
+                    <input type="text" class="form-control" id="apassword" name="apassword">
+                </div>
+                <div class="text-right">
+                    <span id="areturnMessage" class="glyphicon"> </span>
+                    <button type="button" class="btn btn-default right" data-dismiss="modal">关闭</button>
+                    <button id="asubmitBtn" type="button" class="btn btn-primary" >修改</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    var $=jQuery.noConflict();
+    $("#submitBtn").click(function () {
+        var id= $("#uid").val();
+        var name= $("#name").val();
+        var password= $("#password").val();
+        $.ajax({
+            //请求方式
+            type : "POST",
+            //请求的媒体类型
+            contentType: "application/x-www-form-urlencoded",
+            //请求地址
+            url : "/updateUser",
+            //数据，json字符串
+            data : {"id":id,"name":name,"password":password},
+            //请求成功
+            success : function(result) {
+                if (result=="success"){
+                    alert("修改成功");}else
+                        if(result=="fail"){
+                    alert("该用户不存在")
+                }else {
+                    alert("未知错误")
+                }
+                location.reload();
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    })
+
+    $("#asubmitBtn").click(function () {
+        var id= $("#aid").val();
+        var name= $("#aname").val();
+        var password= $("#apassword").val();
+        $.ajax({
+            //请求方式
+            type : "POST",
+            //请求的媒体类型
+            contentType: "application/x-www-form-urlencoded",
+            //请求地址
+            url : "/addUser",
+            //数据，json字符串
+            data : {"id":id,"name":name,"password":password},
+            //请求成功
+            success : function(result) {
+                if (result=="success"){
+                    alert("添加成功");}
+                else if(result=="fail"){
+                    alert("该用户已经存在")
+                }else {
+                    alert("未知错误")
+                }
+                location.reload();
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    })
+
+
+    function modalId(id) {
+    $("#uid").val(id);
+    }
+
+    function addmodalId(id) {
+        $("#aid").val(id);
+    }
+
+    function confirmDelete(id){
+        var flag=confirm("确认删除学号为"+id+"用户吗?");
+        if(flag){
+            deleteUser(id);
+        }else {
+            return false;
+        }
+    }
+    function deleteUser(id) {
+        $.ajax({
+            //请求方式
+            type : "POST",
+            //请求的媒体类型
+            contentType: "application/x-www-form-urlencoded",
+            //请求地址
+            url : "/deleteUser",
+            //数据，json字符串
+            data : {"id":id},
+            //请求成功
+            success : function(result) {
+                if (result=="success"){
+               alert("删除成功");}else if(result=="fail"){
+                    alert("该用户不存在")
+                }else {
+                    alert("未知错误")
+                }
+                location.reload();
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    }
+
+
+</script>
+</body>
+</html>

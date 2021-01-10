@@ -1,0 +1,93 @@
+<view class="main">
+
+
+  <!-- 搜索框 -->
+  <view class="cu-bar search bg-white">
+    <view class="search-form round search-form-left">
+      <text class="cuIcon-search"></text>
+      <input type='text' value='{{content}}' placeholder="搜索主题关键词" bindfocus="searchSkip" ></input>
+    </view>
+  </view>
+  <!-- <view class="cu-bar search bg-white">
+    <view class="search-form round search-form-left">
+      <text class="cuIcon-search"></text>
+      <input type='text' value='{{content}}' placeholder="搜索主题关键词" confirm-type="search" bindinput='formName'  bindinput='changeSearch'></input>
+      <text class="cuIcon-roundclosefill text-size text-gray" wx:if="{{isShow}}" bindtap="clear"></text>
+    </view>
+    <view class="action search-form-right">
+      <button class="cu-btn bg-green shadow-blur round " bindtap="skipResult">搜索</button>
+    </view>
+  </view> -->
+
+  <!-- 轮播图 -->
+  <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+    <swiper-item wx:for="{{swiperList}}" wx:key='key' class="{{cardCur==index?'cur':''}}">
+      <view class="swiper-item">
+        <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+        <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
+</swiper> -->
+
+  <!-- 列表 -->
+  <view class="cu-list grid col-{{gridCol}}">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key="key" wx:if="{{index<gridCol*2}}" bindtap="skipIconList" data-current="{{item.skip}}" data-id="{{item.id}}">
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+        <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+          <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+        </view>
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+
+  <!-- 创建活动 -->
+  <view class="CreateActivity-box">
+    <view class="CreateActivity-button bg-blue margin-top shadow" bindtap="skipCreateActivity">
+      创建活动
+    </view>
+  </view>
+
+
+  <!-- 文字提示 -->
+  <view class="bg-white">
+    <view class="flex-sub text-center">
+      <view class="padding">
+        <view class="text-red text-center">温馨提示：</view>
+        <view> 您可以自己创建活动，也可以选择下面的活动。</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 各种活动 -->
+  <view class="search-are">
+
+    <!-- 内容  class =  search-content-->
+    <view class="margin-tb-sm text-center search-content" wx:for="{{RandomArr}}" wx:for-item="item" wx:key="key" wx:if="{{ColorList.item.name!='white'}}">
+      <button bindtap="clickSearch" data-current="{{item.major}}" class="cu-btn round bg-white shadow" bindtap="skipCreateActivity2">{{item.major}}</button>
+    </view>
+    <!-- 内容 -->
+  </view>
+
+  <!-- 刷新 -->
+  <button class="cu-btn block bg-blue lg other-box" bindtap="makeRandomArr">
+    <image src="../../images/other.png" mode="widthFill"></image>
+    换一换
+  </button>
+</view>
+
+
+<!-- <view class="solids-bottom flex align-center">
+  <view class="flex-sub text-center">
+    <view class="solid-bottom text-xsl padding"></view>
+    <view class="padding">没有更多啦</view>
+  </view>
+</view> -->

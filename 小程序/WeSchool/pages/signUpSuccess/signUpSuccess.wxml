@@ -1,0 +1,41 @@
+<view>
+<view class="top-image">
+    <image  src="{{img}}" class='bgImg'></image>
+</view>
+    <view class="tou"><open-data type="userAvatarUrl" lang="en" /></view>
+    <text class='major'>活动主题：{{major}}</text>
+      <!-- <text class='major'>pwdid{{pwdid}}</text> -->
+    <text class='time'>时间：{{starttime}} ~ {{endtime}}</text>
+    <text class='tishi' wx:if="{{isCreate==0}}">报名成功</text>
+    <text class='tishi' wx:if="{{isCreate==1}}">活动创建成功</text>
+    <text class='shareText'>生成海报分享至</text>
+
+
+<image bindtap='backHome' class='d-back-home' src='../../images/home1.png' lazy-load></image>
+    
+    <view class='imgBox'>
+        <button open-type="share" class='zfbtn'>
+            <image src="{{qq}}" class='img'></image>
+        </button> 
+        <button class='zfbtn m_l' bindtap='formSubmit'>
+            <image src="{{qqkj}}" class='img'></image>
+        </button>
+    </view>
+
+
+    <view class='imagePathBox' hidden="{{maskHidden == false}}">
+        <image src="{{imagePath}}" class='shengcheng'></image>
+        <button class='baocun' bindtap='baocun'>保存相册，分享到朋友圈</button>
+    </view>
+
+
+    <view hidden="{{maskHidden == false}}" class="mask"></view>
+
+
+    <view class="canvas-box">
+        <canvas style="width: 375px;height: 667px;position:fixed;top:9999px" canvas-id="mycanvas" />
+    </view>
+
+
+
+</view>

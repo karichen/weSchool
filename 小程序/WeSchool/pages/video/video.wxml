@@ -1,0 +1,28 @@
+<view class="top-box">
+  <view class="top-box-title">
+    <text>视频</text>
+    <text class="cuIcon-record top-box-title-icon"></text>
+  </view>
+  <view class="top-box-explain">视频分为预习和复习两个板块，帮助大家对所学知识加深印象</view>
+</view>
+
+<view class="main">
+
+  <view class="detail">
+    <block wx:for="{{listUnits}}" wx:for-item="item" wx:key="key">
+      <view class="detail-item" bindtap="toDetail" data-id="{{item.id}}" data-name="{{item.name}}">
+        <view class="detail-text">
+          {{item.name}}
+         </view>
+        <text class="cuIcon-right detail-icon"></text>
+      </view>
+    </block>
+  </view>
+
+ <view class="aboutUs cu-btn round lg shadow bg-yellow" bindtap="goExam">看完了?去做题巩固一下</view>
+</view>
+
+
+
+
+

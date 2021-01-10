@@ -1,0 +1,121 @@
+/* pages/signUpDetail/signUpDetail.wxss */
+
+.center {
+    text-align: center;
+}
+
+.sex {
+    margin-left: 40rpx;
+}
+
+
+/* 回到首页,固定定位,悬浮 */
+
+.d-back-home {
+    position: fixed;
+    width: 96rpx;
+    height: 96rpx;
+    right: 30rpx;
+    bottom: 166rpx;
+    z-index: 10000;
+}
+
+.main{
+  width: 100%;
+  overflow: hidden;
+}
+
+.mymargin{
+  margin-right: 20rpx;
+}
+
+
+/* pages/actionMessage/actionMessage.wxss */
+
+.margin-top {
+    margin-top: 350rpx;
+}
+
+.gotop {
+    position: fixed;
+    z-index: 1;
+    right: 30rpx;
+    bottom: 50rpx;
+    height: 90rpx;
+    width: 90rpx;
+    display: flex;
+    font-weight: 700;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 50rpx;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+}
+
+.message-box-bottom {
+    padding: 10rpx;
+    min-height: 180rpx;
+}
+
+.message-box-image {
+    margin-top: 20rpx;
+    overflow: hidden;
+    max-height: 285rpx;
+}
+
+.message-box-image image {
+    width: 100%;
+}
+
+.text-left {
+    margin-right: 20rpx;
+}
+
+.text-right {
+    margin-left: 20rpx;
+}
+
+.text-size {
+    font-size: 35rpx;
+}
+
+.long-text {
+    word-break: break-all;
+}
+
+.text-weight {
+    font-weight: 700;
+}
+
+.text-white {
+    color: white;
+}
+
+.long-text {
+    word-break: break-all;
+}
+
+.color-yellow {
+    background-color: #8FC8BA;
+}
+
+.color-origin {
+    background-color: #FD8000;
+}
+
+.label {
+    position: absolute;
+    z-index: 3;
+}
+
+.mybutton-box{
+  text-align: center;
+}
+
+.mybutton{
+  width: 45%;
+  margin: 10rpx;
+}

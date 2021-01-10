@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/signUpDetail/signUpDetail",
+    "pages/searchInput/searchInput",
+    "pages/searchResult/searchResult",
+    "pages/activityDetail/activityDetail",
+    "pages/activityCreation/activityCreation",
+    "pages/search/search",
+    "pages/handbook/handbook",
+    "pages/signUpSuccess/signUpSuccess",
+    "pages/mine/mine",
+    "pages/allActivities/allActivities",
+    "pages/actionMessage/actionMessage",
+    "pages/myAction/myAction",
+    "pages/contactMe/contactMe",
+    "pages/activityEdit/activityEdit",
+    "pages/feedback/feedback",
+    "pages/signUp/signUp",
+    "pages/video/video",
+    "pages/examination/examination",
+    "pages/examination/exam/exam",
+    "pages/report/report",
+    "pages/video/videoDetail/videoDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "                                    We口袋校园",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#8FC8BA"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#8FC8BA",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "selectedIconPath": "/images/home-selected.png",
+        "iconPath": "/images/home.png",
+        "pagePath": "pages/home/home",
+        "text": "主页"
+      },
+      {
+        "selectedIconPath": "/images/message-selected.png",
+        "iconPath": "/images/message.png",
+        "pagePath": "pages/actionMessage/actionMessage",
+        "text": "我的活动"
+      },
+      {
+        "selectedIconPath": "/images/mine-selected.png",
+        "iconPath": "/images/mine.png",
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

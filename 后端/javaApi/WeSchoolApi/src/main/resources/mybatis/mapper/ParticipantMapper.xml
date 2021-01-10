@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chk.mapper.ParticipantMapper">
+    <insert id="addParticipant" parameterType="com.chk.pojo.Participant">
+        insert into participant (
+             infoList,
+             pwdid,
+             openid
+             )
+             values(
+             #{infoList},
+             #{pwdid},
+             #{openid}
+             )
+    </insert>
+    <select id="queryParticipantByOpenidPwdid" parameterType="com.chk.pojo.Participant" resultType="com.chk.pojo.Participant">
+         select * from participant where openid=#{openid} and pwdid=#{pwdid}
+    </select>
+     <update id="closeShowMyPartByOpenid" parameterType="String">
+        update participant set showflag = 0 where openid=#{openid} and pwdid=#{pwdid}
+     </update>
+     <update id="updateParticipantByOpenidPwdid" parameterType="String">
+        update participant
+        set showflag = 1,
+             infoList=#{infoList}
+        where openid=#{openid} and pwdid=#{pwdid}
+     </update>
+
+     <select id="queryListParticipantByPwdid" parameterType="String" resultType="com.chk.pojo.Participant">
+          select p.* from participant p
+          left join active a on
+          a.pwdid=p.pwdid
+          where a.pwdid=#{pwdid}
+     </select>
+</mapper>

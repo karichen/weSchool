@@ -1,0 +1,52 @@
+/* pages/mine/mine.wxss */
+
+page {
+    background-color: white;
+}
+
+.triangle-topleft {
+    width: 0;
+    height: 0;
+    border-top: 300rpx solid #8FC8BA;
+    border-right: 1000rpx solid transparent;
+}
+
+.top {
+    width: 100%;
+    height: 300rpx;
+    overflow: hidden;
+    position: relative;
+}
+
+.userAvatar-box {
+    width: 200rpx;
+    height: 200rpx;
+    position: absolute;
+    top: 55rpx;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    border: 8rpx solid white;
+    overflow: hidden;
+}
+
+.userAvatar {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.userNickName-box {
+    font-size: 45rpx;
+    text-align: center;
+}
+
+.menu-box {
+    margin-top: 120rpx;
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+}

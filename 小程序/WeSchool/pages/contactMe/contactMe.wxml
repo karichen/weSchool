@@ -1,0 +1,16 @@
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+    <view class='text-center margin-bottom text-lg  text-grey'>约个活动</view>
+    <view class='text-content'>
+        <view>Hi！~欢迎使约个活动！</view>
+        <view class='margin-top-sm'>
+            一起约个活动主要用于学生之间的动态交流，构建一个属于年轻人服务的圈子。通过附近活动这个版块，让浏览者能看到附近一些有趣的活动，
+    并找到合适的活动参与。有想法的人可以在上面可以发布一些活动。
+    可以让周围的人能快速，直接的了解活动，传达自己的思想等，并参与进来。
+    还可以用于学校老师与同学之间的活动报名统计。
+        </view>
+        <view class='margin-top-sm'>更多功能敬请期待！</view>
+        <view class='margin-top-xl text-l' bindtap="copyBtnQQ">联系qq:1260570909</view>
+        <view class='text-l' bindtap="copyBtnPhone">联系电话：15695216092</view>
+        <view class='margin-top-xl' bindtap="copyBtnPhone">点击可复制qq和电话</view>
+    </view>
+</view>

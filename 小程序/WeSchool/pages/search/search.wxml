@@ -1,0 +1,80 @@
+<view class="main">
+  <!--star Hot-Search History-Search-->
+  <view wx:if='{{current==1}}'>
+
+    <image src="../../images/top-image.png" class="top-image" mode="widthFix"></image>
+
+    <view class="characters">
+      <image class="search-icon-1" bindtap="upWords" src="../../images/search-icon.png" mode="widthFix"></image>
+      <input type="text" class="characters-input" value="{{wordDescription}}" bindconfirm="upWords" confirm-type="search" bindinput='changeSearch' bindblur='wordDescriptionInput' placeholder="搜索垃圾/种类/类别"></input>
+      <image class="search-icon-2" wx:if='{{!ispicture}}' src="../../images/delete.png" bindtap='back'></image>
+      <!-- <image class="search-icon-2" wx:if='{{ispicture}}' src="../../images/picture.png" bindtap="tabNav" data-current="2"></image> -->
+    </view>
+
+    <!-- 历史搜索  热门搜索 区域 star -->
+    <view wx:if="{{!isshow}}">
+      <!-- <view wx:if="{{0}}"> -->
+      <view class="Search">
+        <view>
+          <view class="Search-name">历史搜索</view>
+          <view class="Search-clear" bindtap="searchClear">清除历史搜索</view>
+        </view>
+        <view class="search-are">
+          <!-- 内容  class =  search-content-->
+          <view class="margin-tb-sm text-center search-content" wx:for="{{historySearch}}" wx:for-item="item" wx:key="key" wx:if="{{ColorList.item.name!='white'}}">
+            <button bindtap="clickSearch" data-current="{{item}}" class="cu-btn text-cut round lines-{{ColorList[(index+1)%10].name}}">{{item}}</button>
+          </view>
+          <!-- 内容 -->
+        </view>
+      </view>
+
+      <view class="Search">
+        <view class="Search-name">热门搜索</view>
+        <view class="search-are">
+          <!-- 内容  class =  search-content-->
+          <view class="margin-tb-sm text-center search-content" wx:for="{{hotSearch}}" wx:for-item="item" wx:key="key" wx:if="{{ColorList.item.name!='white'}}">
+            <button bindtap="clickSearch" data-current="{{item.kind}}" class="cu-btn text-cut round lines-{{ColorList[(index+1)%10].name}}">{{item.kind}}</button>
+          </view>
+          <!-- 内容 -->
+        </view>
+      </view>
+    </view>
+    <!-- 历史搜索  热门搜索 区域 end -->
+
+    <!-- 结果 区域 star -->
+    <view class="characters-text" wx:if="{{isshow}}">
+      {{describtionw}}
+      <image src="../../images/{{kind}}" mode="widthFix" class="Search-image"></image>
+    </view>
+    <!-- 结果 区域 end -->
+  </view>
+  <!--文字 end-->
+  <!--  图片 star -->
+  <view wx:if='{{current==2}}'>
+    <view class="container">
+      <view class="picture">
+      <view class="picture-content">
+ <image src='{{source}}' bindtap='chooseImageTap' class="demoPicture" mode="aspectFit" />
+       <!-- <image src='{{source}}' class="addpicture" wx:if='{{hide}}' mode="widthFix" /> -->
+      </view>
+      </view>
+       <image src="../../images/sticker.png" class="sticker" mode="widthFix" />
+      <view class="text container">{{describtion}}</view>
+      <!-- <image src="../../images/addPicture.png" wx:if='{{!hide}}' bindtap='chooseImageTap' mode="widthFix" class="addpicture"></image> -->
+      <!-- <button wx:if="{{0}}" bindtap='upImgs' class="btn">开始分析</button> -->
+    </view>
+  </view>
+  <!-- 图片 end-->
+
+  <!-- 404 -->
+  <view wx:if='{{current==3}}'>
+    <image src="../../images/404.gif" class="gif-404" mode="widthFix"></image>
+  </view>
+  <!-- 404 -->
+
+  <!-- 加载 -->
+  <view class='cu-load load-modal' wx:if="{{loadModal}}">
+    <image src='/images/logo.png' class='png' mode='aspectFit'></image>
+    <view class='gray-text'>加载中...</view>
+  </view>
+</view>

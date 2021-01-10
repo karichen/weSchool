@@ -1,0 +1,75 @@
+<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{imgList}}" wx:key="key" wx:index="index">
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}" wx:key="key"></image>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
+</swiper>
+
+<view class="padding bg-white">
+  <!-- <view class="padding">
+    <text class="text-green text-xxl" wx:if="{{enrollment<count}}">进行中,可报名</text>
+    <text class="text-red text-xxl" wx:if="{{enrollment>=count}}">人数已经满,不可报名</text>
+  </view> -->
+  <view class="padding">
+    <text class="cuIcon-comment title"></text>
+    <text class="title">主题：</text>
+    <view class="text-xxl content">{{major}}</view>
+  </view>
+
+  <view class="padding">
+    <text class="cuIcon-time title"></text>
+    <text class="title">活动时间:</text>
+    <view class="content">{{starttime}}~{{endtime}}</view>
+  </view>
+
+  <view class="padding">
+    <text class="cuIcon-location title"></text>
+    <text class="title">地点：</text>
+    <view class="content">{{place}}</view>
+  </view>
+
+  <view class="padding {{enrollment>=count?'text-red':'text-green'}}">
+    <text class="cuIcon-people title"></text>
+    <text class="title">报名人数：</text>
+    <view class="content">最多{{count}}人，已有{{enrollment}}人参与</view>
+  </view>
+
+  <view class="padding">
+    <text class="cuIcon-moneybag title"></text>
+    <text class="title">价钱：</text>
+    <view class="content">{{salary}}</view>
+  </view>
+
+  <view class="padding">
+    <text class="cuIcon-phone title"></text>
+    <text class="title">联系方式：</text>
+    <view class="content" bindtap="copyBtnQQ">QQ：{{QQ}}(点击复制)</view>
+    <view class="content" bindtap="copyBtnPhone">电话：{{phone}}(点击复制)</view>
+  </view>
+
+  <view class="padding margin-botton">
+    <text class="cuIcon-edit title"></text>
+    <text class="title">活动备注：</text>
+    <view class="content">{{remark}}</view>
+  </view>
+
+</view>
+
+<!-- <view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    活动备注
+  </view>
+</view>
+
+<view class="padding bg-white footer">
+  {{remark}}
+</view> -->
+
+<image bindtap="backHome" class="d-back-home" src="../../images/home1.png" lazy-load></image>
+
+<view class="cu-bar bg-white tabbar border shop foot">
+  <button class="action text-orange color foot-left" open-type="share">
+    <view class="cuIcon-share"></view> 分享</button>
+  <view class="bg-yellow submit foot-right" bindtap="skip" wx:if="{{enrollment<count}}">立即报名</view>
+  <view class="bg-red submit foot-right" wx:if="{{enrollment>=count}}">人数已满</view>
+</view>

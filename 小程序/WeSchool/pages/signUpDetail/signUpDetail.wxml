@@ -1,0 +1,48 @@
+<view style="main">
+  <view class="bg-white padding-lr">
+    <view class="flex-sub text-center">
+      <view class="padding">
+        <view class="text-red text-center">温馨提示：</view>
+        复制以下地址到浏览器即可下载详细报名表。 （点击复制地址）
+        <view class="text-blue text-center" bindtap="copy">{{url}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class="cu-list menu-avatar">
+    <block wx:for="{{people}}" wx:key="key" wx:item="item">
+      <view class="cu-item cur">
+        <view class="cu-avatar radius lg" style="background-image:url({{item.avaUrl}});"></view>
+        <view class="content">
+          <view class="center">
+            <text class="text-cut ">{{item.userNick}}</text>
+          </view>
+          <view class="text-gray text-sm flex center">
+            <text class="text-cut">{{item.gender}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view> -->
+
+  <view class="padding-lr  margin-top text-center" wx:if="{{people.length==0}}">
+    <view class="solid-bottom padding">
+      <text class="text-ABC">(︶.̮︶✽)nothing</text>
+    </view>
+    <view class="padding">啥也没有</view>
+  </view>
+
+	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+				<view class="cu-item arrow" wx:for="{{people}}" wx:key="index">
+					<view class="content">
+						<text class="text-grey" class="mymargin">{{index +1}}</text>
+            <view class="cu-avatar radius mymargin" style="background-image:url({{item.avaUrl}});"></view>
+            <text class="mymargin">{{item.userNick}}</text>
+            <text class="mymargin">{{item.gender}}</text>
+					</view>
+				</view>
+			</view>
+
+
+  <image bindtap='backHome' class='d-back-home' src='../../images/home1.png' lazy-load></image>
+</view>

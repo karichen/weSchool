@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chk.mapper.ExamMapper">
+
+    <select id="queryExam" parameterType="map" resultType="com.chk.pojo.Exam">
+        select * from examthumbnail where  kind = #{kind} limit 0,5
+    </select>
+
+    <select id="queryExamMore" parameterType="map" resultType="com.chk.pojo.Exam">
+        select * from examthumbnail where  kind = #{kind}
+    </select>
+    <select id="queryExamDetail" parameterType="map" resultType="com.chk.pojo.Exam">
+        select * from examdetail where groupd = #{groupd}
+    </select>
+
+    <select id="queryExaminationByKind" parameterType="com.chk.pojo.Examination" resultType="com.chk.pojo.Examination">
+        select * from
+        <choose>
+            <when test="kind == 1">
+                exam_1
+            </when>
+            <when test="kind == 2">
+                exam_2
+            </when>
+            <when test="kind == 3">
+                exam_3
+            </when>
+            <when test="kind == 4">
+                exam_4
+            </when>
+            <when test="kind == 5">
+                exam_5
+            </when>
+            <when test="kind == 6">
+                exam_6
+            </when>
+            <when test="kind == 7">
+                exam_7
+            </when>
+            <when test="kind == 8">
+                exam_8
+            </when>
+            <when test="kind == 9">
+                exam_9
+            </when>
+            <when test="kind == 10">
+                exam_10
+            </when>
+        </choose>
+        WHERE id >= ( SELECT floor(RAND() * (SELECT MAX(id)  from
+        <choose>
+            <when test="kind == 1">
+                exam_1
+            </when>
+            <when test="kind == 2">
+                exam_2
+            </when>
+            <when test="kind == 3">
+                exam_3
+            </when>
+            <when test="kind == 4">
+                exam_4
+            </when>
+            <when test="kind == 5">
+                exam_5
+            </when>
+            <when test="kind == 6">
+                exam_6
+            </when>
+            <when test="kind == 7">
+                exam_7
+            </when>
+            <when test="kind == 8">
+                exam_8
+            </when>
+            <when test="kind == 9">
+                exam_9
+            </when>
+            <when test="kind == 10">
+                exam_10
+            </when>
+        </choose>
+        ))) ORDER BY id LIMIT 10
+    </select>
+
+</mapper>

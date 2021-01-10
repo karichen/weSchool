@@ -1,0 +1,37 @@
+/* pages/activityCreation/activityCreation.wxss */
+
+.color {
+    background-color: #FEC900;
+}
+
+
+/* 添加的新功能  */
+
+.search-content {
+    margin: 10rpx;
+}
+
+.search-are {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    background-color: white;
+}
+
+.wid {
+    width: 420rpx
+}
+
+
+/* 回到首页,固定定位,悬浮 */
+
+.d-back-home {
+    position: fixed;
+    width: 96rpx;
+    height: 96rpx;
+    right: 30rpx;
+    bottom: 166rpx;
+    z-index: 10000;
+}

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chk.mapper.ActiveMapper">
+    <insert id="addActive" parameterType="Map">
+        insert into active
+        (major,starttime,endtime,place,salary,count,remark,qriginator_openid,qriginator_QQ,qriginator_phone,fields,pwdid)
+        values(#{major},#{starttime},#{endtime},#{place},#{salary},#{count},#{remark},#{qriginator_openid},
+        #{qriginator_QQ},#{qriginator_phone},#{fields},#{pwdid})
+    </insert>
+
+    <select id="queryeActiveImgUrl" parameterType="Map" resultType="com.chk.pojo.Active">
+        select * from active where pwdid= #{pwdid} and #{uuid1}=#{uuid1}
+    </select>
+
+    <update id="updateActiveImgUrl1" parameterType="String">
+        update active set imgUrl1=#{imgUrlname} where pwdid=#{pwdid}
+    </update>
+    <update id="updateActiveImgUrl2" parameterType="String">
+        update active set imgUrl2=#{imgUrlname} where pwdid=#{pwdid}
+    </update>
+    <update id="updateActiveImgUrl3" parameterType="String">
+        update active set imgUrl3=#{imgUrlname} where pwdid=#{pwdid}
+    </update>
+    <update id="updateActiveImgUrl4" parameterType="String">
+        update active set imgUrl4=#{imgUrlname} where pwdid=#{pwdid}
+    </update>
+
+
+    <!--查询所有我创建的正在进行的活动-->
+    <select id="queryActiveByOpenid" parameterType="String" resultMap="ActiveMap">
+        select * from active where qriginator_openid=#{qriginator_openid} and starttime>now()
+    </select>
+    <resultMap id="ActiveMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+    <!--查询所有我创建的已经过期的活动-->
+    <select id="queryHistoryActiveByOpenid" parameterType="String" resultMap="HistoryActiveMap">
+        select * from active where qriginator_openid=#{qriginator_openid} and now()>starttime
+    </select>
+    <resultMap id="HistoryActiveMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+
+    <select id="queryActiveByPwdid" parameterType="String" resultMap="onActiveMap">
+        select * from active where pwdid=#{pwdid}
+    </select>
+    <resultMap id="onActiveMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+
+    <update id="updateActive" parameterType="Map">
+        update active
+        set major=#{major},
+         starttime=#{starttime},
+         endtime=#{endtime},
+         place=#{place},
+         salary=#{salary},
+         count=#{count},
+         remark=#{remark},
+         qriginator_openid=#{qriginator_openid},
+         qriginator_QQ=#{qriginator_QQ},
+         qriginator_phone=#{qriginator_phone},
+         fields=#{fields}
+        where pwdid=#{pwdid}
+    </update>
+
+
+
+    <!--查询所有正在进行的活动-->
+    <select id="queryAllActive" parameterType="String" resultMap="AllActiveMap">
+        select * from active where starttime>now()
+    </select>
+    <resultMap id="AllActiveMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+    <!--查询所有已经过期的的活动-->
+    <select id="queryAllHistoryActive" parameterType="String" resultMap="AllHistoryActiveMap">
+        select * from active where now()>starttime
+    </select>
+    <resultMap id="AllHistoryActiveMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+
+    <!--查询所有我参加的正在进行的活动-->
+    <select id="queryMypartAllActive" parameterType="String" resultMap="MypartActiveMap">
+        select a.* from active a
+        left join participant p
+        on  a.pwdid=p.pwdid
+        where p.openid=#{openid} and p.showflag=1 and a.starttime>now()
+    </select>
+    <resultMap id="MypartActiveMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+    <!--查询所有我参加的已经过期的活动-->
+    <select id="queryHistoryMypartAllActive" parameterType="String" resultMap="HistoryMypartActiveMap">
+        select a.* from active a
+        left join participant p
+        on  a.pwdid=p.pwdid
+        where p.openid=#{openid} and p.showflag=1 and now()>a.starttime
+    </select>
+    <resultMap id="HistoryMypartActiveMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+    <update id="updateOneActiveByPwdid" parameterType="String">
+         update active set enrollment=enrollment+1 where pwdid=#{pwdid}
+    </update>
+
+    <update id="updateMinusOneActiveByPwdid" parameterType="String">
+         update active set enrollment=enrollment-1 where pwdid=#{pwdid}
+    </update>
+
+    <select id="queryAllContentActive" parameterType="String" resultMap="AllContentMap">
+        select * from active where  starttime>now() and (major like concat(concat('%',#{content}),'%') or remark like concat(concat('%',#{content}),'%'))
+    </select>
+    <resultMap id="AllContentMap" type="com.chk.pojo.Active">
+        <id column="id" property="id"/>
+        <result column="major" property="major"/>
+        <result column="starttime" property="starttime"/>
+        <result column="endtime" property="endtime"/>
+        <result column="place" property="place"/>
+        <result column="salary" property="salary"/>
+        <result column="count" property="count"/>
+        <result column="enrollment" property="enrollment"/>
+        <result column="remark" property="remark"/>
+        <result column="imgUrl1" property="imgUrl1"/>
+        <result column="imgUrl2" property="imgUrl2"/>
+        <result column="imgUrl3" property="imgUrl3"/>
+        <result column="imgUrl4" property="imgUrl4"/>
+        <result column="act" property="act"/>
+        <result column="fields" property="fields"/>
+        <result column="pwdid" property="pwdid"/>
+        <association property="qriginator" javaType="com.chk.pojo.Qriginator">
+            <result property="phone" column="qriginator_phone"/>
+            <result property="QQ" column="qriginator_QQ"/>
+            <result property="openid" column="qriginator_openid"/>
+        </association>
+    </resultMap>
+
+    <!--根据openid和pwdid删除活动-->
+    <delete id="deleteActiveByOpenIdPwdid" parameterType="Map">
+       delete from active where qriginator_openid=#{openid} and pwdid=#{pwdid}
+    </delete>
+
+
+</mapper>

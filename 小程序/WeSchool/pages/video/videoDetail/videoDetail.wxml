@@ -1,0 +1,133 @@
+<scroll-view scroll-x class="bg-cyan nav text-center background">
+  <view class="cu-item  item-regulation {{current==0 ? 'text-white cur' : ''}}" data-current="0" bindtap="swichNav">
+    <text class="cuIcon-camerafill"></text> 预习
+  </view>
+
+  <view class="cu-item  item-regulation {{current==1 ? 'text-white cur' : ''}}" data-current="1" bindtap="swichNav">
+    <text class="cuIcon-countdownfill"></text> 复习
+  </view>
+</scroll-view>
+
+
+  <!-- 预习滑块 -->
+  <view wx:if="{{current==0}}">
+
+<!-- 返回顶部 -->
+
+<view class="goTop" hidden='{{!showGoTop}}' bindtap="goTop">Top</view>
+
+      <!-- 视频区 ヽ( ^∀^)ﾉ 开始 -->
+      <view class="cu-card case no-card">
+        <view class="cu-item shadow">
+          <video id="myvideo"  class="videoController" src="{{pvideoUrl}}" binderror="videoErrorCallback" controls="{{true}}" danmu-btn='true' enable-danmu='true' danmu-list='{{pdanmulist}}'bindplay="pbindPlay"></video>
+          <view class="cu-list menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round lg" style="background-image:url(https://www.pppnut.cn/wxxcx/img/touxiang.jpeg);"></view>
+              <view class="content flex-sub">
+                <view class="text-grey">周老师</view>
+                <view class="text-gray text-sm flex justify-between">
+                  2019-10-20
+                  <view class="text-gray text-sm">
+                    <text class="cuIcon-attentionfill margin-lr-xs"></text>{{videoInfo[0]['previewVideo']['points']}}
+                    <text class="cuIcon-messagefill margin-lr-xs"></text>  {{videoInfo[0]['previewVideo']['comment']}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 视频区 (ÒωÓױ)呃！！！！结束 -->
+
+      <!-- 发弹幕input   ヽ( ^∀^)ﾉ 开始 -->
+      
+      <view class="barrage-box">
+        <input class="barrage-input" placeholder="快来发送弹幕(๑•̀ㅂ•́)و✧" bindblur='getInput'></input>
+        <button class="barrage-btn cu-btn bg-red round shadow " bindtap='psendDanmu' form-type='reset'>发送弹幕</button>
+      </view>
+
+      <!-- 发弹幕input (ÒωÓױ)呃！！！！结束 -->
+
+      <!-- 评论区   ヽ( ^∀^)ﾉ 开始 -->
+      <view class="cu-list menu-avatar comment solids-top">
+          
+        <!-- 评论内容 -->
+        <view wx:for="{{pjsondata}}" class="cu-item" wx:for-item="item" wx:key="key" wx:key="key" wx:if="{{index<length[current]}}">
+          <view class="cu-avatar round" style="background-image:url({{item.imgUrl}});"></view>
+          <view class="content">
+            <view class="text-grey">{{item.nick}}</view>
+            <view class="text-gray text-content text-df">
+                 {{item.text}}
+            </view>
+            <view class="margin-top-sm flex justify-between">
+              <view class="text-gray text-df"> {{item.datetime}}</view>
+            </view>
+          </view>
+        </view>
+        <!-- 评论内容 -->
+      </view>
+   
+<view class="cu-load bg-grey {{!isLoad[current]?'loading':'over'}}"></view>
+      <!-- 评论区 (ÒωÓױ)呃！！！！结束 -->
+
+
+    </view>
+  <!-- 预习滑块 -->
+
+
+  <!-- 复习滑块 -->
+  <view wx:if="{{current==1}}">
+  <!-- 返回顶部 -->
+
+<view class="goTop" hidden='{{!showGoTop}}' bindtap="goTop">Top</view>
+
+      <view class="cu-card case no-card">
+        <view class="cu-item shadow">
+          <video class="videoController" src="{{rvideoUrl}}" binderror="videoErrorCallback"controls="{{true}}" danmu-btn='true' enable-danmu='true' danmu-list='{{rdanmulist}}'bindplay="rbindPlay"></video>
+          <view class="cu-list menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round lg" style="background-image:url(https://www.pppnut.cn/wxxcx/img/touxiang.jpeg);"></view>
+              <view class="content flex-sub">
+                <view class="text-grey">周老师</view>
+                <view class="text-gray text-sm flex justify-between">
+                  2019-10-20
+                  <view class="text-gray text-sm">
+                    <text class="cuIcon-attentionfill margin-lr-xs"></text> {{videoInfo[0]['reviewVideo']['points']}}
+                    <text class="cuIcon-messagefill margin-lr-xs"></text>   {{videoInfo[0]['reviewVideo']['comment']}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 发弹幕input   ヽ( ^∀^)ﾉ 开始 -->
+      <view class="barrage-box">
+        <input class="barrage-input" placeholder="快来发送弹幕(๑•̀ㅂ•́)و✧" bindblur='getInput'></input>
+        <button class="barrage-btn cu-btn bg-red round shadow " bindtap='rsendDanmu' form-type='reset'>发送弹幕</button>
+      </view>
+      <!-- 发弹幕input (ÒωÓױ)呃！！！！结束 -->
+
+   <!-- 评论区   ヽ( ^∀^)ﾉ 开始 -->
+      <view class="cu-list menu-avatar comment solids-top">
+        <!-- 评论内容 -->
+        <view wx:for="{{rjsondata}}" class="cu-item" wx:for-item="item"wx:key="key" wx:if="{{index<length[current]}}">
+          <view class="cu-avatar round" style="background-image:url({{item.imgUrl}});"></view>
+          <view class="content">
+            <view class="text-grey">{{item.nick}}</view>
+            <view class="text-gray text-content text-df">
+                 {{item.text}}
+            </view>
+            <view class="margin-top-sm flex justify-between">
+              <view class="text-gray text-df"> {{item.datetime}}</view>
+            </view>
+          </view>
+        </view>
+        <!-- 评论内容 -->
+      </view>
+      <!-- 评论区 (ÒωÓױ)呃！！！！结束 -->
+      <view class="cu-load bg-grey {{!isLoad[current]?'loading':'over'}}"></view>
+  </view>
+  <!-- 复习滑块 -->
+

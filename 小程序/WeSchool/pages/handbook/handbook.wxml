@@ -1,0 +1,60 @@
+<view class="top">
+    <image src="https://www.pppnut.cn/wxxcx/img/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+<view class="main">
+
+  <!-- 左边 -->
+  <!-- vertical 竖线 -->
+  <view class="left">
+    <view class="box-left {{current == 0?'box-left-hover left-color-0':''}}" catchtap="tabNav" data-current="0">
+      <view class="vertical left-color-0"></view>湿垃圾</view>
+    <view class="box-left {{current == 1?'box-left-hover left-color-1':''}}" catchtap="tabNav" data-current="1">
+      <view class="vertical left-color-1"></view>干垃圾</view>
+    <view class="box-left {{current == 2?'box-left-hover left-color-2':''}}" catchtap="tabNav" data-current="2">
+      <view class="vertical left-color-2"></view>可回收物</view>
+    <view class="box-left {{current == 3?'box-left-hover left-color-3':''}}" catchtap="tabNav" data-current="3">
+      <view class="vertical left-color-3"></view>有害垃圾</view>
+  </view>
+  <!-- 左边end -->
+ 
+  <!-- 右边 -->
+  <view class="right">
+    <scroll-view scroll-y="true" style="height: 100%" scroll-top='{{topNum}}' bindscrolltoupper="upper" bindscrolltolower="lower" >
+      <!-- 厨余垃圾 -->
+      <view class="item" wx:if="{{current==0}}">
+        <image src="../../images/handbook-WetGarbage.png" mode="widthFix"></image>
+        <block wx:for="{{kitchenwaste}}" wx:for-item="item" wx:for-index="index" wx:key="key">
+          <view class="content {{index%2==1?'content-even':''}}">{{item.name}}</view>
+        </block>
+      </view>
+
+      <!-- 干垃圾 -->
+      <view class="item" wx:if="{{current==1}}">
+       <image src="../../images/handbook-DryGarbage.png" mode="widthFix"></image>
+     
+        <block wx:for="{{otherwaste}}" wx:for-item="item" wx:key="key">
+          <view class="content {{index%2==1?'content-even':''}}">{{item.name}}</view>
+        </block>
+      </view>
+
+      <!-- 可回收物 -->
+      <view class="item" wx:if="{{current==2}}">
+       <image src="../../images/handbook-RecyclableWaste.png" mode="widthFix"></image>
+        <block wx:for="{{recyclablewaste}}" wx:for-item="item" wx:key="key">
+          <view class="content {{index%2==1?'content-even':''}}">{{item.name}}</view>
+        </block>
+      </view>
+
+      <!-- 有害垃圾 -->
+      <view class="item" wx:if="{{current==3}}">
+       <image src="../../images/handbook-HarmfulWaste.png" mode="widthFix"></image>
+        <block wx:for="{{harmfulwaste}}" wx:for-item="item" wx:key="key">
+          <view class="content {{index%2==1?'content-even':''}}">{{item.name}}</view>
+        </block>
+      </view>
+
+    </scroll-view>
+  </view>
+
+</view>
+ <view class="aboutUs cu-btn round lg shadow bg-yellow" bindtap="goSearch">工具查询</view>

@@ -1,0 +1,116 @@
+.top-box {
+    background-color: #8FC8BA;
+    position: relative;
+    height: 120rpx;
+    width: 100%;
+}
+
+.top-title {
+    width: 100%;
+    position: relative;
+}
+
+.content {
+    position: relative;
+    top: 30rpx;
+}
+
+.content-1 {
+    font-size: 80rpx;
+}
+
+.content-2 {
+    font-size: 100rpx;
+    font-weight: 700;
+}
+
+.content-3 {
+    font-size: 80rpx;
+}
+
+.main {
+    width: 100%;
+    position: relative;
+}
+
+.item-box {
+    margin-bottom: 60rpx;
+}
+
+.problem {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    padding: 25rpx;
+}
+
+.problem-image {
+    width: 100%;
+    min-height: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.problem-image image {
+    width: 100%;
+    height: 90rpx;
+}
+
+.problem-word {
+    width: 92%;
+    margin-left: 4%;
+    margin-top: 25rpx;
+}
+
+.radio {
+    width: 98%;
+    position: relative;
+    left: 1%;
+}
+
+.radio-item {
+    align-content: center;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 120rpx;
+}
+
+.radio-item radio {
+    line-height: 120rpx;
+    position: relative;
+    top: -35rpx;
+}
+
+.radio-option {
+    flex: 1;
+    font-size: 40rpx;
+    text-align: center;
+}
+
+.radio-answer {
+    flex: 8;
+    font-size: 40rpx;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.option {
+    background-color: #7299df;
+    color: white;
+    width: 90%
+}
+
+.swiper-slide {
+    height: 1px
+}
+
+
+/* 随意指定一个height值即可 */
+
+.swiper-slide-active {
+    height: auto
+}

@@ -1,0 +1,155 @@
+.main {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #fff;
+}
+
+.top-image {
+    width: 100%;
+}
+
+
+/* 图片区 */
+
+.sticker {
+    position: absolute;
+    width: 150rpx;
+    top: -12rpx;
+}
+
+.picture {
+    margin-top: -100rpx;
+    width: 80%;
+    height: 600rpx;
+    background-color: white;
+    border-radius: 10rpx;
+    box-shadow: 4rpx 4rpx 8rpx rgba(0, 0, 0, 0.5);
+}
+
+.picture-content {
+    margin: 5% auto;
+    width: 85%;
+    height: auto;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+
+.demoPicture {
+    width: 1000rpx;
+}
+
+.addpicture {
+    width: 400rpx;
+    position: relative;
+    margin: 0 auto;
+}
+
+.text {
+    width: 85%;
+    height: 400rpx;
+    margin-bottom: 30rpx;
+    padding: 20rpx;
+}
+
+.btn {
+    width: 85%;
+    border-radius: 41rpx;
+    background-color: #1aad19;
+    position: fixed;
+    bottom: 50rpx;
+    margin-left: 20%;
+}
+
+
+/*end图片区 */
+
+
+/*文字区 */
+
+
+/* 搜索框 */
+
+.characters {
+    position: relative;
+    top: -40rpx;
+    width: 95%;
+    height: 100rpx;
+    border-radius: 41rpx;
+    margin: 0 auto;
+    box-shadow: 4rpx 4rpx 8rpx rgba(0, 0, 0, 0.4);
+    background-color: white;
+}
+
+.search-icon-1 {
+    max-height: 160rpx;
+    overflow: hidden;
+    width: 55rpx;
+    height: 55rpx;
+    position: absolute;
+    top: 25rpx;
+    left: 15rpx;
+}
+
+.search-icon-2 {
+    width: 55rpx;
+    height: 55rpx;
+    position: absolute;
+    top: 25rpx;
+    right: 20rpx;
+}
+
+.characters-input {
+    position: absolute;
+    left: 100rpx;
+    width: 70%;
+    height: 100%;
+}
+
+.Search {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.Search-name {
+    font-size: 50rpx;
+    float: left;
+}
+
+.Search-clear {
+    float: right;
+}
+
+.search-are {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* 历史搜索 热门搜索 内容 */
+
+.search-content {
+    margin: 10rpx;
+}
+
+
+/* 搜索结果中的大图 */
+
+.Search-image {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.characters-text {
+    width: 84%;
+    margin: 0 auto;
+    margin-bottom: 30%;
+}
+
+
+/* end文字区 */
+
+.gif-404 {
+    width: 100%;
+}

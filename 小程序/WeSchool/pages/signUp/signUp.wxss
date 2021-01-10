@@ -1,0 +1,20 @@
+/* pages/signUp/signUp.wxss */
+.color{
+  background-color: #FEC900;
+}
+
+
+.long-text {
+ word-break:break-all;
+}
+
+/* 回到首页,固定定位,悬浮 */
+
+.d-back-home {
+    position: fixed;
+    width: 96rpx;
+    height: 96rpx;
+    right: 30rpx;
+    bottom: 166rpx;
+    z-index: 10000;
+}

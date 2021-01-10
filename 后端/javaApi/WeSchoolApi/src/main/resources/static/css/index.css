@@ -1,0 +1,9 @@
+body{
+    padding-top: calc(15%);
+    padding-left: calc(42%);
+}
+
+table,th,td{
+    border:1px black solid;
+    text-align: center;
+}

@@ -1,0 +1,93 @@
+page {
+    background-color: #fff;
+}
+
+.top-box {
+    width: 100%;
+    position: relative;
+    height: 260rpx;
+    border-bottom-right-radius: 35rpx;
+    border-bottom-left-radius: 35rpx;
+    background-color: #8FC8BA;
+    overflow: hidden;
+}
+
+.top-box-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    top: 5rpx;
+    left: 40rpx;
+    overflow: hidden;
+}
+
+.top-box-explain {
+    color: #fff;
+    font-size: 26rpx;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    overflow: hidden;
+}
+
+.top-box-title-icon {
+    font-size: 1em;
+    color: #fff;
+    position: relative;
+    margin-left: 10rpx;
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    min-height: 800rpx;
+    border-top-left-radius: 35rpx;
+    border-top-right-radius: 35rpx;
+    top: -95rpx;
+    background-color: #fff;
+}
+
+.detail {
+    position: relative;
+    top: 50rpx;
+    width: 85%;
+    margin-left: 10%;
+}
+
+.detail-item {
+    width: 90%;
+    height: 85rpx;
+    margin-top: 50rpx;
+    border-radius: 50rpx;
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    background-color: #8FC8BA;
+}
+
+.detail-text {
+    flex: 4;
+    font-size: 40rpx;
+    align-content: center;
+    text-align: center;
+    line-height: 90rpx;
+}
+
+.detail-icon {
+    flex: 1;
+    line-height: 90rpx;
+}
+
+.footer {
+    width: 100%;
+    color: #4e4d4a;
+    font-size: 1em;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    bottom: 30rpx;
+    margin-top: 30rpx;
+    left: 0;
+    right: 0;
+}

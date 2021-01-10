@@ -1,0 +1,37 @@
+<view class="main">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+    <view class="cu-form-group margin-top">
+      <view class="title">姓名</view>
+      <input name="name" placeholder="姓名/非必填"></input>
+    </view>
+
+    <view class="cu-form-group margin-top">
+      <view class="title">电话</view>
+      <input name="phone" placeholder="phone/非必填"></input>
+    </view>
+
+    <view class="cu-form-group margin-top">
+      <view class="title">QQ</view>
+      <input name="QQ" placeholder="QQ/非必填"></input>
+    </view>
+
+    <view class="cu-form-group margin-top">
+      <view class="title">微信</view>
+      <input name="wx" placeholder="微信/非必填"></input>
+    </view>
+
+    <view class="cu-form-group margin-top">
+      <textarea name="feed_back" maxlength="-1" disabled="{{modalName!=null}}" placeholder="请说出你的槽点/必填"></textarea>
+    </view>
+
+    <button formType="submit" class="cu-btn block bg-blue margin-tb-sm lg">
+      <text class="cuIcon-appreciate"></text> 提交
+    </button>
+
+    <button formType="reset" class="cu-btn block bg-green margin-tb-sm lg">
+      <text class="cuIcon-refresh"></text> 清空
+    </button>
+ 
+  </form>
+</view>

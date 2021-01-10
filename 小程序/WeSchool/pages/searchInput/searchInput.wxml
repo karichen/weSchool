@@ -1,0 +1,38 @@
+<view class="cu-bar search bg-white">
+  <view class="search-form round search-form-left">
+    <text class="cuIcon-search"></text>
+    <input type='text' value='{{content}}' placeholder="搜索主题关键词" confirm-type="search" bindinput='formName' bindinput='changeSearch'></input>
+    <text class="cuIcon-roundclosefill text-size text-gray" wx:if="{{isShow}}" bindtap="clear"></text>
+  </view>
+  <view class="action search-form-right">
+    <button class="cu-btn bg-green shadow-blur round " bindtap="skipResult">搜索</button>
+  </view>
+</view>
+
+<view>
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text>历史搜索</text>
+      <view class="Search-clear" bindtap="searchClear">清除历史搜索</view>
+    </view>
+  </view>
+  <view class="area">
+    <button wx:for="{{historySearch}}" wx:for-item="item" wx:key="key" bindtap="clickSearch" data-current="{{item}}" class="cu-btn text-cut round mybutton">{{item}}</button>
+  </view>
+</view>
+
+
+<view style="margin-top:10rpx;">
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-title text-green"></text>
+      <text>热门活动</text>
+    </view>
+  </view>
+  <view>
+    <view class="area">
+      <button wx:for="{{hotSearch}}" wx:for-item="item" wx:key="key" bindtap="clickSearch" data-current="{{item}}" class="cu-btn text-cut round mybutton">{{item}}</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+/* pages/contactMe/contactMe.wxss */
+.ad{
+    margin-top:10rpx
+}

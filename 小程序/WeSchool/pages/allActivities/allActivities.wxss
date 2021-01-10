@@ -1,0 +1,86 @@
+/* pages/actionMessage/actionMessage.wxss */
+
+.gotop {
+    position: fixed;
+    z-index: 1;
+    right: 30rpx;
+    bottom: 50rpx;
+    height: 90rpx;
+    width: 90rpx;
+    display: flex;
+    font-weight: 700;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 50rpx;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+}
+
+.message-box-bottom {
+    padding: 10rpx;
+    min-height: 180rpx;
+}
+
+.message-box-image {
+    margin-top: 20rpx;
+    overflow: hidden;
+    max-height: 285rpx;
+}
+
+.message-box-image image {
+    width: 100%;
+}
+
+.text-left {
+    margin-right: 20rpx;
+}
+
+.text-right {
+    margin-left: 20rpx;
+}
+
+.text-size {
+    font-size: 35rpx;
+}
+
+.long-text {
+    word-break: break-all;
+}
+
+.text-weight {
+    font-weight: 700;
+}
+
+.text-white {
+    color: white;
+}
+
+.long-text {
+    word-break: break-all;
+}
+
+.color-yellow {
+    background-color: #8FC8BA;
+}
+
+.color-origin {
+    background-color: #FD8000;
+}
+
+.label {
+    position: absolute;
+    z-index: 3;
+}
+
+.label-number {
+    position: absolute;
+    z-index: 3;
+    left: 200rpx;
+}
+
+.margin-top {
+    margin-top: 350rpx;
+}
